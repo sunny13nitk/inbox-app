@@ -4,7 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .DS_Store
-**/secure-connect.zip
+**/secure-connect-inbox-app.zip
 .mvn/
 
 ### STS ###
@@ -32,5 +32,5 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+### ASTRA ###
+secure-connect-inbox-app.zip
