@@ -12,6 +12,9 @@ import io.javabrains.inbox.UI.pojo.UserMsgContainer;
 import io.javabrains.inbox.repo.FolderByUserRepo;
 import io.javabrains.inbox.srv.intf.IFoldersByUserSrv;
 
+/*
+ * Main Controller
+ */
 @Controller
 public class InboxController
 {
