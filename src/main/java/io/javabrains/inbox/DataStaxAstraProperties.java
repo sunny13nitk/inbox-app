@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /*
- * PROPERTIES File connection to Establish conection using Bundle
+ * PROPERTIES File connection to Establish connection using Bundle
  */
 @Configuration
 @ConfigurationProperties(prefix = "datastax.astra")
