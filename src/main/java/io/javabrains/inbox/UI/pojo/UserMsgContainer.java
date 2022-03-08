@@ -17,5 +17,6 @@ public class UserMsgContainer
 {
 	private String userName;
 	private List<FolderByUser> userFolders = new ArrayList<FolderByUser>();
+	private List<FolderByUser> defaultFolders = new ArrayList<FolderByUser>();
 
 }

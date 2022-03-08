@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import io.javabrains.inbox.UI.pojo.UserMsgContainer;
 import io.javabrains.inbox.repo.FolderByUserRepo;
+import io.javabrains.inbox.srv.intf.IFoldersByUserSrv;
 
 @Controller
 public class InboxController
 {
 	@Autowired
 	private FolderByUserRepo repoFolderByUser;
+
+	@Autowired
+	private IFoldersByUserSrv folderSrv;
 
 	@GetMapping("/")
 	public String showInbox(@AuthenticationPrincipal OAuth2User principal, Model model)
@@ -27,6 +31,7 @@ public class InboxController
 			UserMsgContainer usrMsgsCont = new UserMsgContainer();
 			usrMsgsCont.setUserName(principal.getAttribute("login"));
 			usrMsgsCont.setUserFolders(repoFolderByUser.findAllByUserid(usrMsgsCont.getUserName()));
+			usrMsgsCont.setDefaultFolders(folderSrv.getDefaultFoldersforUser(usrMsgsCont.getUserName()));
 			model.addAttribute("usrData", usrMsgsCont);
 
 			return "inbox-page";
