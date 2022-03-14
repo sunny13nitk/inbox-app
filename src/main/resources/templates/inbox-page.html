@@ -58,7 +58,8 @@ footer {
 		</header>
 		<nav>
 			<div
-				th:insert="fragments/folders-list::folders-list(panelName='Folders', folders=${usrData.defaultFolders})"></div>
+				th:insert="fragments/folders-list::folders-list(panelName='Folders', folders=${usrData.defaultFolders})">
+			</div>
 			<div
 				th:insert="fragments/folders-list::folders-list(panelName='User Folders', folders=${usrData.userFolders})"></div>
 
@@ -66,7 +67,25 @@ footer {
 		</nav>
 
 		<main>
-		<p>Email List</p>
+		<div class="card">
+			<div class="card-header">Inbox</div>
+			<div class="card-body">
+				<div class="list-group">
+					<a th:each="message: ${usrData.currEmailItems}"
+						class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1"
+								th:classappend="${message.isRead} ? regular : bold"
+								th:text="${message.subject}">Subject</h5>
+							<small th:text=${message.agoTimeString}>3 days ago</small>
+						</div>
+						<p class="mb-1">
+							<span>From: </span><span th:text="${message.to}">Sender</span>
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
 		</main>
 
 		<footer>
