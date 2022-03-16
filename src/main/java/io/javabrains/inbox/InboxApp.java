@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.datastax.oss.driver.api.core.uuid.Uuids;
 
+import io.javabrains.inbox.model.Email;
 import io.javabrains.inbox.model.EmailListItem;
 import io.javabrains.inbox.model.EmailListItemKey;
 import io.javabrains.inbox.repo.EmailListItemRepo;
+import io.javabrains.inbox.repo.EmailRepo;
 
 @SpringBootApplication
 @RestController
@@ -29,6 +31,9 @@ public class InboxApp
 {
 	@Autowired
 	private EmailListItemRepo emailListRepo;
+
+	@Autowired
+	private EmailRepo emailRepo;
 
 	public static void main(String[] args)
 	{
@@ -54,6 +59,7 @@ public class InboxApp
 	{
 		// Loading EMails
 		List<EmailListItem> emailItems = new ArrayList<EmailListItem>();
+		List<Email> emails = new ArrayList<Email>();
 		for (int i = 0; i < 10; i++)
 		{
 			EmailListItemKey emKey = new EmailListItemKey("sunny13nitk", "Inbox", Uuids.timeBased());
@@ -61,8 +67,19 @@ public class InboxApp
 					false, null);
 			emailItems.add(emailListItem);
 
+			Email email = new Email();
+			email.setId(emKey.getTimeUUID());
+			email.setBody("Body " + i);
+			email.setFrom("sunny13nitk");
+			email.setSubject(emailListItem.getSubject());
+			email.setTo(emailListItem.getTo());
+
+			emails.add(email);
+
 		}
 		emailListRepo.saveAll(emailItems);
+		emailRepo.saveAll(emails);
+
 	}
 
 }

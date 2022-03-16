@@ -68,10 +68,11 @@ footer {
 
 		<main>
 		<div class="card">
-			<div class="card-header">Inbox</div>
+			<div class="card-header" th:text=${folderName}></div>
 			<div class="card-body">
 				<div class="list-group">
-					<a th:each="message: ${usrData.currEmailItems}"
+					<a th:href="@{'/emails/' + ${message.key.timeUUID}}"
+						th:each="message: ${usrData.currEmailItems}"
 						class="list-group-item list-group-item-action">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1"
