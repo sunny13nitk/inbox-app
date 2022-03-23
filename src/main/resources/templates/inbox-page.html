@@ -57,6 +57,9 @@ footer {
 			</h1>
 		</header>
 		<nav>
+			<div class="card">
+				<a href="/compose/new" class="btn btn-primary">Compose message</a>
+			</div>
 			<div
 				th:insert="fragments/folders-list::folders-list(panelName='Folders', folders=${usrData.defaultFolders})">
 			</div>

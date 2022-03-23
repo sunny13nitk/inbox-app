@@ -51,6 +51,9 @@ footer {
 			</h1>
 		</header>
 		<nav>
+			<div class="card">
+				<a href="/compose/new" class="btn btn-primary">Compose message</a>
+			</div>
 			<div
 				th:insert="fragments/folders-list::folders-list(panelName='Folders', folders=${usrData.defaultFolders})">
 			</div>
@@ -92,15 +95,18 @@ footer {
               </div> -->
 
 
-				<a th:href="@{'/compose?to=' + ${email.from}}" type="button"
-					class="btn btn-primary">Reply
-					</button> <a th:href="@{'/compose?to=' + ${email.from} + ',' + ${toIds}}"
-					type="button" class="btn btn-primary">Reply All</a> <!-- <form style="display:inline-block;"><select id="moveToFolder" name="moveToFolder" class="form-select" aria-label="Move to folder">
+				<a th:href="@{'/compose/reply/'+${email.id}}" type="button"
+					class="btn btn-primary">Reply</a>
+
+				<a th:href="@{'/compose/replyall/' + ${email.id}}" type="button"
+					class="btn btn-primary">Reply All</a>
+
+				<!-- <form style="display:inline-block;"><select id="moveToFolder" name="moveToFolder" class="form-select" aria-label="Move to folder">
                   <option th:each="folder : ${defaultFolders}" th:text="${folder.label}">Status</option>
                 </select>
                 <button href="/" class="btn btn-secondary" type="button">Move</button>
-              </form> --> <a href="/" class="btn btn-secondary"
-					type="button">Cancel</a>
+              </form> -->
+				<a th:href="@{'/'}" class="btn btn-secondary" type="button">Cancel</a>
 			</dl>
 		</div>
 		</main>

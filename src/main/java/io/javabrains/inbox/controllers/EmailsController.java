@@ -55,7 +55,7 @@ public class EmailsController
 				usrMsgsCont.setCurrEmailItems(msgSrv.getFormattedMessagesbyUserAndFolder(usrMsgsCont.getUserName(),
 						EnumDefaultFolderNames.Inbox.name()));
 
-				// Get The Email Details by ID
+				// Get The EmailNew Details by ID
 				model.addAttribute("email", msgSrv.getEmailDetailsbyID(id));
 				// Set in Model
 				model.addAttribute("usrData", usrMsgsCont);

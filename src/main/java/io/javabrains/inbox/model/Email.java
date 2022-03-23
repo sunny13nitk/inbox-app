@@ -27,15 +27,18 @@ public class Email
 	private UUID id;
 
 	@CassandraType(type = Name.TEXT)
+
 	private String subject;
 
 	@CassandraType(type = Name.TEXT)
+
 	private String from;
 
 	@CassandraType(type = Name.LIST, typeArguments = Name.TEXT)
 	private List<String> to;
 
 	@CassandraType(type = Name.TEXT)
+
 	private String body;
 
 }
